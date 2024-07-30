@@ -1,3 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div class="full-page">
+    <div>
+    <h1>The Predicter Audit Report</h1>
+    <h3>Prepared by: Syed Rabeet</h3>
+    <h5>July 25th,2024</h5>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+# Disclaimer
+
+Syed Rabeet makes all effort to find as many vulnerabilities in the code in the given time period, but holds no responsibilities for the the findings provided in this document. A security audit by the team is not an endorsement of the underlying business or product. The audit was time-boxed and the review of the code was solely on the security aspects of the solidity implementation of the contracts.
+
+
+# Risk Classification
+
+|            |        | Impact |        |     |
+| ---------- | ------ | ------ | ------ | --- |
+|            |        | High   | Medium | Low |
+|            | High   | H      | H/M    | M   |
+| Likelihood | Medium | H/M    | M      | M/L |
+|            | Low    | M      | M/L    | L   |
+
+## Scope
+
+```
+./src/
+-- Scoreboard.sol
+-- ThePredicter.sol
+```
+
+# Protocol Summary 
+
+The Predicter is an innovative competitive betting protocol offering a decentralized and fair way for friends and strangers to make wagers!
+
+## Roles
+
+-  Organizer: The only one who is the host of the event can approve users to become players and has the basic admin privileges for the event
+-  User: Everyone can be a User by simply registering using the `register` function.
+- Players: Users can become players after the approval from Organizer and can make predictions.
+
+## Issues found
+
+| Severity | Number of issues found |
+| -------- | ---------------------- |
+| High     | 1                      |
+| Medium   | 0                      |
+| Low      | 0                      |
+| Info     | 0                      |
+| Total    | 1                      |
+
+### Findings
+
 ### [H-01]: Lack of Player's Addresses Authentication in `ThePredicter::makePrediction` Function, Permitting Unauthorized Addresses to Submit Predictions.
 
 **Summary:** The `ThePredicter::makePrediction` function is designed to be called by addresses within the player's array. However, any address can currently call this function and submit a prediction.
